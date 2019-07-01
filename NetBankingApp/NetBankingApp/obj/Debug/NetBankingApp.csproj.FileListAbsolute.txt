@@ -1,0 +1,14 @@
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\bin\Debug\NetBankingApp.exe.config
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\bin\Debug\NetBankingApp.exe
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\bin\Debug\NetBankingApp.pdb
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\bin\Debug\Entities.dll
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\bin\Debug\NetBankingBL.dll
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\bin\Debug\NetBankingDAL.dll
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\bin\Debug\Entities.pdb
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\bin\Debug\NetBankingBL.pdb
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\bin\Debug\NetBankingDAL.pdb
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\obj\Debug\NetBankingApp.csprojAssemblyReference.cache
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\obj\Debug\NetBankingApp.csproj.CoreCompileInputs.cache
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\obj\Debug\NetBankingApp.csproj.CopyComplete
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\obj\Debug\NetBankingApp.exe
+C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingApp\obj\Debug\NetBankingApp.pdb
