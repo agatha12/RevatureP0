@@ -11,6 +11,8 @@ namespace Entities
         public int Id;
         public string firstName;
         public string lastName;
+        public int areaCode;
+        public int phoneNumber;
         
 
     }

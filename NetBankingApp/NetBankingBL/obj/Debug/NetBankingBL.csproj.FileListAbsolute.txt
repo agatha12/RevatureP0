@@ -9,3 +9,14 @@ C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingBL\obj\Debug\NetBankingBL.c
 C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingBL\obj\Debug\NetBankingBL.csproj.CopyComplete
 C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingBL\obj\Debug\NetBankingBL.dll
 C:\Users\agkie\June2019Week1\NetBankingApp\NetBankingBL\obj\Debug\NetBankingBL.pdb
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\bin\Debug\NetBankingBL.dll
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\bin\Debug\NetBankingBL.pdb
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\bin\Debug\Entities.dll
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\bin\Debug\NetBankingDAL.dll
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\bin\Debug\Entities.pdb
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\bin\Debug\NetBankingDAL.pdb
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\obj\Debug\NetBankingBL.csprojAssemblyReference.cache
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\obj\Debug\NetBankingBL.csproj.CoreCompileInputs.cache
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\obj\Debug\NetBankingBL.csproj.CopyComplete
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\obj\Debug\NetBankingBL.dll
+C:\Users\agkie\RevatureP0\NetBankingApp\NetBankingBL\obj\Debug\NetBankingBL.pdb

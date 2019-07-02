@@ -4,3 +4,9 @@ C:\Users\agkie\June2019Week1\NetBankingApp\Entities\obj\Debug\Entities.csprojAss
 C:\Users\agkie\June2019Week1\NetBankingApp\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
 C:\Users\agkie\June2019Week1\NetBankingApp\Entities\obj\Debug\Entities.dll
 C:\Users\agkie\June2019Week1\NetBankingApp\Entities\obj\Debug\Entities.pdb
+C:\Users\agkie\RevatureP0\NetBankingApp\Entities\bin\Debug\Entities.dll
+C:\Users\agkie\RevatureP0\NetBankingApp\Entities\bin\Debug\Entities.pdb
+C:\Users\agkie\RevatureP0\NetBankingApp\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
+C:\Users\agkie\RevatureP0\NetBankingApp\Entities\obj\Debug\Entities.csproj.CoreCompileInputs.cache
+C:\Users\agkie\RevatureP0\NetBankingApp\Entities\obj\Debug\Entities.dll
+C:\Users\agkie\RevatureP0\NetBankingApp\Entities\obj\Debug\Entities.pdb

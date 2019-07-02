@@ -20,7 +20,7 @@ namespace NetBankingApp
             Console.WriteLine("2. Create a new account");
             Console.WriteLine("3. Make a transaction on an exisitng account");
             Console.WriteLine("4. View list of accounts for a customer");
-             string userChoice = Console.ReadLine();
+            string userChoice = Console.ReadLine();
 
             switch (userChoice)
             {
@@ -28,15 +28,28 @@ namespace NetBankingApp
 
                     Console.WriteLine("Please enter your first name...");
                     string fname = Console.ReadLine();
+           
+             
 
                     Console.WriteLine("Please enter your last name...");
                     string lname = Console.ReadLine();
+       
+                    Console.WriteLine("Please enter your area code");
+                    int areaCode = getAreaCode();
+
+                    Console.WriteLine("Please enter you phone number...");
+                    int phoneNumber = getPhoneNumber();
+
+
 
                     Customer customerNew = new Customer()
                     {
                         Id = Bank.custNumber,
                         firstName = fname,
-                        lastName = lname
+                        lastName = lname,
+                        areaCode = areaCode,
+                        phoneNumber= phoneNumber
+
                     };
                     Bank.custNumber++;
                     CustomerBL customerBL = new CustomerBL();
@@ -47,11 +60,9 @@ namespace NetBankingApp
                     break;
                 case "2":
                     Console.WriteLine("Please enter your Customer ID");
-                    int custId = Convert.ToInt32(Console.ReadLine());
-                     if (!Menu.customerIdValidation(custId)){
-                        Console.WriteLine("There is no customer under that number.");
-                        returnToMain();
-                    }
+                    int custId = getCustomerId();
+
+
 
                     Console.WriteLine("What type of account would you like to open?");
                     Console.WriteLine("Press 1 for Checking");
@@ -61,7 +72,7 @@ namespace NetBankingApp
                     string type = Console.ReadLine();
                     double rate = 0.00;
                     double balance = 0;
-                        if(type == "1")
+                    if (type == "1")
                     {
                         type = "Checking";
                         rate = 0.11;
@@ -80,7 +91,7 @@ namespace NetBankingApp
                         Console.WriteLine(accountBL.CreateAccount(accountNew));
 
 
-    
+
                     }
                     else if (type == "2")
                     {
@@ -99,7 +110,7 @@ namespace NetBankingApp
                         AccountBL accountBL = new AccountBL();
                         Console.WriteLine(accountBL.CreateAccount(accountNew));
                     }
-                        else if (type == "3")
+                    else if (type == "3")
                     {
                         type = "Term";
                         rate = 3.0;
@@ -118,7 +129,7 @@ namespace NetBankingApp
                         AccountBL accountBL = new AccountBL();
                         Console.WriteLine(accountBL.CreateAccount(accountNew));
                     }
-                        else if ( type == "4")
+                    else if (type == "4")
                     {
                         type = "Loan";
                         rate = 4.5;
@@ -146,18 +157,12 @@ namespace NetBankingApp
                     break;
                 case "3":
                     Console.WriteLine("What is your account number?");
-                    int accountId = Convert.ToInt32(Console.ReadLine());
-                    if (!Menu.accountIdValidation(accountId))
-                    {
-                        Console.WriteLine("There is no account under that number.");
-                        Console.WriteLine("Please press enter to return to the main menu");
-                        Console.ReadLine();
-                        Menu.menu();
-                    }
+                    int accountId = getAccountNumber();
+                    
                     int accountIndex = Bank.AccountList.FindIndex(a => a.accountNumber.Equals(accountId));
 
-                    Console.WriteLine("What is you Customer Id?");
-                    int yourId = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("What is your Customer Id?");
+                    int yourId = getCustomerId();
                     if (yourId != Bank.AccountList[accountIndex].CustomerId)
                     {
                         Console.WriteLine($"That is not the correct customer Id for account number {accountId}");
@@ -172,24 +177,24 @@ namespace NetBankingApp
                     Console.WriteLine("Press 5 to View transaction log");
                     Console.WriteLine("Press 6 to Delete account");
                     string transType = Console.ReadLine();
-                    
-                    if(transType == "1")
+
+                    if (transType == "1")
                     {
                         Console.WriteLine("How much would you like to withdraw?");
-                        double amount  = Convert.ToInt32(Console.ReadLine());
+                        double amount = getAmount();
 
 
-                        
+
                         var accountType = Bank.AccountList[accountIndex].type;
-                        if(accountType == "Checking")
+                        if (accountType == "Checking")
                         {
                             Checking accountNew = new Checking();
                             accountNew = (Checking)Bank.AccountList[accountIndex];
                             Console.WriteLine(accountNew.withdraw(amount));
                             returnToMain();
-                            
+
                         }
-                        else if (accountType == "Banking")
+                        else if (accountType == "Business")
                         {
                             Business accountNew = new Business();
                             accountNew = (Business)Bank.AccountList[accountIndex];
@@ -198,7 +203,7 @@ namespace NetBankingApp
 
 
                         }
-                        else if(accountType == "Term")
+                        else if (accountType == "Term")
                         {
                             Term accountNew = new Term();
                             accountNew = (Term)Bank.AccountList[accountIndex];
@@ -223,7 +228,7 @@ namespace NetBankingApp
                     {
                         Console.WriteLine("How much would you like to deposit?");
                         var accountType = Bank.AccountList[accountIndex].type;
-                        double amount = Convert.ToInt32(Console.ReadLine());
+                        double amount = getAmount();
                         if (accountType == "Checking")
                         {
                             Checking accountNew = new Checking();
@@ -232,7 +237,7 @@ namespace NetBankingApp
                             returnToMain();
 
                         }
-                        else if (accountType == "Banking")
+                        else if (accountType == "Business")
                         {
                             Business accountNew = new Business();
                             accountNew = (Business)Bank.AccountList[accountIndex];
@@ -259,9 +264,9 @@ namespace NetBankingApp
                     }
                     else if (transType == "3")
                     {
-                        
+
                         Console.WriteLine("Enter the account number of the account you would like to transfer money to.");
-                        int toAccount = Convert.ToInt32(Console.ReadLine());
+                        int toAccount = getAccountNumber();
                         if (!Menu.accountIdValidation(toAccount))
                         {
                             Console.WriteLine("There is no account under that number.");
@@ -272,13 +277,13 @@ namespace NetBankingApp
                         int toAccountIndex = Bank.AccountList.FindIndex(a => a.accountNumber.Equals(toAccount));
 
                         if (yourId != Bank.AccountList[toAccountIndex].CustomerId)
-                            {
-                                Console.WriteLine($"That account is registered under a different customer.");
+                        {
+                            Console.WriteLine($"That account is registered under a different customer.");
                             Console.WriteLine("You can only transfer between your own accounts.");
-                                returnToMain();
-                            }
-                       
-                        
+                            returnToMain();
+                        }
+
+
 
 
                         var toAccountType = Bank.AccountList[toAccount].type;
@@ -286,13 +291,13 @@ namespace NetBankingApp
                         var accountType = Bank.AccountList[accountIndex].type;
 
                         Console.WriteLine("How much would you like to transfer?");
-                        double amount = Convert.ToInt32(Console.ReadLine());
+                        double amount = getAmount();
                         if (accountType == "Checking")
                         {
                             Checking accountNew = new Checking();
                             accountNew = (Checking)Bank.AccountList[accountIndex];
                             Console.WriteLine(accountNew.withdraw(amount));
-                            
+
                             if (toAccountType == "Checking")
                             {
                                 Checking toAccountNew = new Checking();
@@ -353,8 +358,9 @@ namespace NetBankingApp
                     {
 
                         var yourBalance = Bank.AccountList[accountIndex].Balance;
-                        Console.WriteLine($"Your account balance is {yourBalance}");
-                
+                        Console.WriteLine($"Your account balance is ${yourBalance}");
+                        Menu.menu();
+
                     }
                     else if (transType == "5")
                     {
@@ -363,14 +369,14 @@ namespace NetBankingApp
                         {
                             Checking accountNew = new Checking();
                             accountNew = (Checking)Bank.AccountList[accountIndex];
-                            foreach(Transaction item in accountNew.getLog())
+                            foreach (Transaction item in accountNew.getLog())
                             {
                                 Console.WriteLine(item.message);
                             }
                             returnToMain();
 
                         }
-                        else if (accountType == "Banking")
+                        else if (accountType == "Business")
                         {
                             Business accountNew = new Business();
                             accountNew = (Business)Bank.AccountList[accountIndex];
@@ -412,8 +418,8 @@ namespace NetBankingApp
                         Bank.AccountList.RemoveAt(accountIndex);
                         Console.WriteLine($"You're account has been deleted");
                         Menu.menu();
-                        
-                        
+
+
                     }
                     else
                     {
@@ -424,7 +430,7 @@ namespace NetBankingApp
                 case "4":
 
                     Console.WriteLine("Please enter your customer ID");
-                    int CustId = Convert.ToInt32(Console.ReadLine());
+                    int CustId = getCustomerId();
                     if (!Menu.customerIdValidation(CustId))
                     {
                         Console.WriteLine("There is no customer under that number.");
@@ -454,9 +460,9 @@ namespace NetBankingApp
         {
             bool x = false;
 
-            foreach(Customer item in Bank.CustomerList)
+            foreach (Customer item in Bank.CustomerList)
             {
-                if(item.Id == Id)
+                if (item.Id == Id)
                 {
                     x = true;
                 }
@@ -494,5 +500,106 @@ namespace NetBankingApp
             Menu.menu();
         }
 
+        public static int getAreaCode()
+        {
+            try
+            {
+                int areaCode = Convert.ToInt32(Console.ReadLine());
+                if (areaCode < 100 || areaCode > 999)
+                {
+                    Console.WriteLine("That was not a valid area code");
+                    Menu.menu();
+                }
+                return areaCode;
+            }
+            catch
+            {
+                Console.WriteLine("That was not a valid area code");
+                Menu.menu();
+                return 0;
+            }
         }
+
+        public static int getPhoneNumber()
+        {
+            try
+            {
+                int phoneNumber = Convert.ToInt32(Console.ReadLine());
+
+                if (phoneNumber < 1000000 || phoneNumber > 9999999)
+                {
+                    Console.WriteLine("That was not a valid phone number");
+                    Menu.menu();
+                }
+                return phoneNumber;
+            }
+            catch
+            {
+                Console.WriteLine("That was not a valid phone number");
+                Menu.menu();
+                return 0;
+            }
+        }
+
+        public static int getCustomerId()
+        {
+            try
+            {
+                int custId = Convert.ToInt32(Console.ReadLine());
+                if (!Menu.customerIdValidation(custId))
+                {
+                    Console.WriteLine("There is no customer under that number.");
+                    returnToMain();
+                }
+                return custId;
+            }
+            catch
+            {
+                Console.WriteLine("That was not a valid customer Id");
+                Menu.menu();
+                return 0;
+            }
+        }
+
+
+
+        public static int getAccountNumber()
+        {
+            try
+            {
+                int accountId = Convert.ToInt32(Console.ReadLine());
+                if (!Menu.accountIdValidation(accountId))
+                {
+                    Console.WriteLine("There is no account under that number.");
+                    Console.WriteLine("Please press enter to return to the main menu");
+                    Console.ReadLine();
+                    Menu.menu();
+                }
+                return accountId;
+            }
+            catch
+            {
+                invalidKey();
+                return 0;
+            }
+        }
+
+        public static double getAmount()
+        {
+            
+                     try
+            {
+                double amount = Convert.ToInt32(Console.ReadLine());
+  
+                return amount;
+            }
+            catch
+            {
+                invalidKey();
+                return 0;
+            }
+        }
+        
+
+    }
 }

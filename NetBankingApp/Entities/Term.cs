@@ -31,7 +31,9 @@ namespace Entities
 
         public string withdraw(double amount)
         {
-            if (DateTime.Now < createdAt.AddMonths(6))
+            int difference = DateTime.Compare(DateTime.Now, createdAt.AddMonths(6));
+
+            if (difference >= 0)
             {
                 if (this.Balance > amount)
                 {
